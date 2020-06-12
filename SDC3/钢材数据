@@ -1,0 +1,22 @@
+<root>
+  <Doc Author="" Description="钢材数据爬取" ImgURL="http://chaotu_1.gitee.io/dataservices/gangcai.jpg" Name="钢铁数据" PublishTime="2019/1/6 19:23:52" SavePath="" ShortDescription="" Version="0">
+    <DataCollections />
+    <DBConnections>
+      <Children AutoConnect="True" ConnectString="" DBName="" Name="最近打开的文件" TypeName="FileManager" />
+      <Children AutoConnect="False" ConnectString="" DBName="hawk" Name="MongoDB连接器" TypeName="MongoDBConnector" />
+      <Children AutoConnect="False" ConnectString="" DBName="hawk-sqlite" Name="SQLite数据库" TypeName="SQLiteDatabase" />
+    </DBConnections>
+    <Parameters />
+    <RunningTasks/>
+    <Children Description="任务描述" IsMultiData="List" IsSuperMode="False" Name="钢材数据采集" Remark="" RootFormat="XPath" RootXPath="/html[1]/body[1]/div[8]/div[2]/div[1]/div[3]/div[1]/table[1]/tr" ScriptPath="" ShareCookie="" Type="SmartCrawler" URL="https://jiancai.mysteel.com/m/20/0612/17/0310F3A11D81881A.html">
+      <HttpSet Allowautoredirect="True" Encoding="Unknown" Method="GET" Parameters="User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36&#xA;" Password="" Postdata="" ProxyIP="" ProxyPort="0" Timeout="100000" URL="" UserName="" />
+      <Children CrawlType="InnerText" Format="XPath" IsEnabled="True" Name="品名" XPath="/td[1]" />
+      <Children CrawlType="InnerText" Format="XPath" IsEnabled="True" Name="规格" XPath="/td[2]" />
+      <Children CrawlType="InnerText" Format="XPath" IsEnabled="True" Name="材质" XPath="/td[3]" />
+      <Children CrawlType="InnerText" Format="XPath" IsEnabled="True" Name="钢材" XPath="/td[4]" />
+    </Children>
+    <Children __KeppOrder="True" DelayTime="0" Description="任务描述" GenerateMode="SerialMode" MaxThreadCount="5" Name="钢材数据清洗" Remark="" SampleMount="20" ScriptPath="" Type="SmartETLTool">
+      <Children Column="从数据表生成" Enabled="True" Group="Generator" MergeType="Cross" TableSelector="提取测试_23:05" Type="TableGE" />
+    </Children>
+  </Doc>
+</root>
